@@ -204,15 +204,14 @@ $today = date('Y-m-d');
                 position: relative;
                 display: flex;
                 flex-direction: column;
-               
+               overflow: hidden;
             } 
         }
     </style>
 </head>
 <body>
    
- <div class="container">
-     <div class="menu">
+ <div class="container"> 
      <nav class="main-menu">
             <ul>
                 <li>
@@ -238,13 +237,7 @@ $today = date('Y-m-d');
                         <i class="fa fa-book fa-2x" style="color: #006950;"></i>
                         <span class="nav-text">Mes réservations</span>
                     </a>
-                </li>
-                <li>
-                    <a href="settings.php">
-                        <i class="fa fa-gear fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Paramètres</span>
-                    </a>
-                </li>
+                </li> 
             </ul>
             <ul class="logout">
                 <li>
@@ -258,12 +251,11 @@ $today = date('Y-m-d');
         
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
-              
                 <tr>
                    <td colspan="4">
                        <center>
                         <div class="abc scroll">
-                        <table width="150%" class="sub-table scrolldown" border="0" style="padding: 100px;border:none">
+                        <table width="15000px" class="sub-table scrolldown" border="0" style="padding: 44px;border:none">
                             
                         <tbody>
                         
@@ -310,22 +302,20 @@ $today = date('Y-m-d');
                                     <td style="width: 50%;" rowspan="2">
                                             <div  class="dashboard-items search-items"  >
                                             
-                                                <div style="width:100%">
+                                                <div style="width:200px; overflow:hidden;">
                                                         <div class="h1-search" style="font-size:25px;">
                                                            Détails de la séance
                                                         </div><br><br>
                                                         <div class="h3-search" style="font-size:18px;line-height:30px">
-                                                            Nom du docteur : &nbsp;&nbsp;<b>'.$docname.'</b><br>
-                                                            Docteur E-mail:  &nbsp;&nbsp;<b>'.$docemail.'</b> 
+                                                            Nom du docteur : &nbsp;&nbsp;<b>'.$docname.'</b> 
                                                         </div>
                                                         <div class="h3-search" style="font-size:18px;">
                                                           
                                                         </div><br>
                                                         <div class="h3-search" style="font-size:18px;">
-                                                            Titre de la séance : '.$title.'<br>
-                                                            Date prévue de la session :'.$scheduledate.'<br>
-                                                            Début de la session :'.$scheduletime.'<br>
-                                                            Frais de canalisation : <b>.2 000.00</b>
+                                                            Titre de la séance: '.$title.'<br>
+                                                            Date prévue de la session:<br>'.$scheduledate.'<br>
+                                                            Début de la session:<br>'.$scheduletime.'<br>
 
                                                         </div>
                                                         <br>
@@ -337,15 +327,15 @@ $today = date('Y-m-d');
                                         
                                         
                                         
-                                        <td style="width: 25%;">
+                                        <td style="width: 10px;">
                                             <div  class="dashboard-items search-items"  >
                                             
-                                                <div style="width:100%;padding-top: 15px;padding-bottom: 15px;">
-                                                        <div class="h1-search" style="font-size:20px;line-height: 35px;margin-left:8px;text-align:center;">
+                                                <div style="width:150px;">
+                                                        <div class="h1-search" style="font-size:20px;line-height: 30px;margin-left:8px;text-align:center;">
                                                             Votre numéro de rendez-vous
                                                         </div>
                                                         <center>
-                                                        <div class=" dashboard-icons" style="margin-left: 0px;width:90%;font-size:70px;font-weight:800;text-align:center;color:var(--btnnictext);background-color: var(--btnice)">'.$apponum.'</div>
+                                                        <div class=" dashboard-icons" style="margin: 0;width:150px;font-size:70px;font-weight:800;text-align:center;color:var(--btnnictext);background-color: var(--btnice)">'.$apponum.'</div>
                                                     </center>
                                                        
                                                         </div><br>
@@ -359,7 +349,7 @@ $today = date('Y-m-d');
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="Submit" class="login-btn btn-primary btn btn-book" style="margin-left:10px;padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;width:95%;text-align: center;" value="Réservez maintenant" name="booknow"></button>
+                                                <input type="Submit" class="  btn-primary btn" style="margin-left:10px;padding-left: 20px;padding-right: 20px;padding-top: 20px;padding-bottom: 50px;width:91%;text-align: center;" value="Réservez maintenant" name="booknow"></button>
                                             </form>
                                             </td>
                                         </tr>

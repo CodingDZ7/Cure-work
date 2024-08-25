@@ -185,19 +185,12 @@ include("../connection.php");
 <body>
    
     <div class="container">
-        <div class="menu">
         <nav class="main-menu">
             <ul>
                 <li>
                     <a href="index.php">
                         <i class="fa fa-home fa-2x" style="color: #006950;"></i>
                         <span class="nav-text">Accueil</span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="doctors.php">
-                        <i class="fa fa-stethoscope fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Tous les médecins</span>
                     </a>
                 </li>
                 <li class="has-subnav">
@@ -231,10 +224,7 @@ include("../connection.php");
         </div>
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
-                <tr >
-                    <td width="13%">
-                        <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Retour</font></button></a>
-                    </td>
+                <tr>
                     <td>
                         
                         <form action="" method="post" class="header-search">
@@ -268,7 +258,7 @@ include("../connection.php");
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('Africa/Algiers');
 
                         $date = date('Y-m-d');
                         echo $date;
@@ -281,15 +271,7 @@ include("../connection.php");
 
 
                 </tr>
-               
-                <tr >
-                    <td colspan="2" style="padding-top:30px;">
-                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Ajouter un nouveau médecin</p>
-                    </td>
-                    <td colspan="2">
-                        <a href="?action=add&id=none&error=0" class="non-style-link"><button  class="login-btn btn-primary btn button-icon"  style="display: flex;justify-content: center;align-items: center;margin-left:75px;background-image: url('../img/icons/add.svg');">Ajouter un nouveau</font></button>
-                            </a></td>
-                </tr>
+                
                 <tr>
                     <td colspan="4" style="padding-top:10px;">
                         <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Tous les médecins (<?php echo $list11->num_rows; ?>)</p>
@@ -349,7 +331,7 @@ include("../connection.php");
                                     <td colspan="4">
                                     <br><br><br><br>
                                     <center>
-                                    <img src="../img/notfound.svg" width="25%">
+                                    <img src="../img/notfound.svg" width="50%">
                                     
                                     <br>
                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nous n\'avons rien trouvé en rapport avec vos mots-clés !</p>
@@ -383,13 +365,10 @@ include("../connection.php");
                                         </td>
 
                                         <td>
-                                        <div style="display:flex;justify-content: center;">
-                                        <a href="?action=edit&id='.$docid.'&error=0" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-edit"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Modifier</font></button></a>
-                                        &nbsp;&nbsp;&nbsp;
+                                        <div style="display:flex;justify-content: center;"> 
                                         <a href="?action=view&id='.$docid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Voir</font></button></a>
                                        &nbsp;&nbsp;&nbsp;
-                                       <a href="?action=drop&id='.$docid.'&name='.$name.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Retirer</font></button></a>
-                                        </div>
+                                       
                                         </td>
                                     </tr>';
                                     
@@ -454,7 +433,6 @@ include("../connection.php");
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
-                        <h2></h2>
                         <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
                             <br>
@@ -563,12 +541,7 @@ include("../connection.php");
                                 <td class="label-td" colspan="2">'.
                                     $errorlist[$error_1]
                                 .'</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Ajouter un nouveau médecin.</p><br><br>
-                                </td>
-                            </tr>
+                            </tr> 
                             
                             <tr>
                                 <form action="add-new.php" method="POST" class="add-new-form">

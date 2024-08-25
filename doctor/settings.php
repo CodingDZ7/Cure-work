@@ -170,20 +170,13 @@ $username=$userfetch["docname"];
 </head>
 <body>
    
-    <div class="container">
-        <div class="menu">
+    <div class="container"> 
         <nav class="main-menu">
             <ul>
                 <li>
                     <a href="index.php">
                         <i class="fa fa-home fa-2x" style="color: #006950;"></i>
                         <span class="nav-text">Accueil</span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="doctors.php">
-                        <i class="fa fa-stethoscope fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Tous les médecins</span>
                     </a>
                 </li>
                 <li class="has-subnav">
@@ -219,9 +212,6 @@ $username=$userfetch["docname"];
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;" >
                         
                         <tr>
-                        <td width="13%">
-                    <a href="index.php"><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Retour </font></button></a>
-                    </td>
                     <td>
                         <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Paramètres</p>
                                            
@@ -248,6 +238,9 @@ $username=$userfetch["docname"];
                                 ?>
                                 </p>
                             </td>
+                    <td width="10%">
+                        <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
+                    </td>
         
         
                         </tr>

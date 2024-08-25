@@ -13,67 +13,191 @@
         table{
             animation: transitionIn-Y-bottom 0.5s;
         }
+
+        .doctors-section {
+            padding: 50px 20px;
+            background-image: url('./img/bg02.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #006950;
+            text-align: center;
+        }
+
+        .doctors-section h2 {
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 15px 0 10px;
+            font-size: 24px;
+        }
+
+        .card p {
+            font-size: 16px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .doctors-section h2 {
+                font-size: 28px;
+            }
+
+            .card h3 {
+                font-size: 20px;
+            }
+
+            .card p {
+                font-size: 14px;
+            }
+        }
     </style>
-        
 </head>
 <body>
-    
-    <div class="full-height">
-        <center>
-        <table border="0">
-            <tr>
-                <td style="width: 80%; vertical-align: middle;">
-                    <div style="display: inline-block; vertical-align: middle;">
-                    <font class="edoc-logo" style="display: inline-block; vertical-align: middle;">
-                        <img src="./img/logo.png" alt="Logo" style="width: 58px; height: auto;">
-                    </font>
-                    <font class="edoc-logo-sub" style="display: inline-block; vertical-align: middle; font-size: 16px; margin-left: 10px;">
-                    
-                    </font>
-                    </div>
-                </td>
-                
-                <td style="width: 10%;">
-                
-                <a href="login.php"  class="non-style-link"><p class="nav-item">Se connecter</p></a>
-                </td>
-                <td  width="10%">
-                    <a href="signup.php" class="non-style-link"><p class="nav-item" style="padding-right: 10px;">S'inscrire</p></a>
-                </td>
-            </tr>
+    <div class="full-height" style="position: relative; background-image: url('./img/bg01.jpg'); background-size: cover; background-position: center; height: 180vh;">
+        <!-- Black transparent overlay -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+        
+        <center style="position: relative; z-index: 1;">
+            <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;background-color: #006950; box-shadow: 0 2px 5px #006950">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0.1px;">
+                    <table border="0" style="width: 100%;">
+                        <tr>
+                            <td style="width: 80%; vertical-align: middle;">
+                                <div style="display: inline-block; vertical-align: middle;">
+                                    <font class="edoc-logo" style="display: inline-block; vertical-align: middle;">
+                                        <img src="./img/logo.png" alt="Logo" style="width: 58px; height: auto;">
+                                    </font>
+                                    <font class="edoc-logo-sub" style="display: inline-block; vertical-align: middle; font-size: 16px; margin-left: 10px;">
+                                    <!-- Add your logo text here if needed -->
+                                    </font>
+                                </div>
+                            </td>
+                            
+                            <td style="width: 10%; text-align: center;">
+                                <a href="login.php" class="non-style-link"><p class="nav-item">Se connecter</p></a>
+                            </td>
+                            
+                            <td style="width: 10%; text-align: center;">
+                                <a href="signup.php" class="non-style-link"><p class="nav-item" style="padding-right: 10px;">S'inscrire</p></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </nav>
             
-            <tr>
-                <td  colspan="3">
-                    <p class="heading-text">Évitez les tracas et les retards.</p>
-
-                </td>
-            </tr>
-            <tr>
-                <td  colspan="3">
-                    <p class="sub-text2">Comment va votre santé aujourd'hui ? Cela ne semble pas être bon ! Ne vous inquiétez pas. Trouvez votre médecin en ligne Réservez comme vous le souhaitez avec Cure. <br>
-                        Nous vous proposons un service gratuit de consultation de médecins. Prenez rendez-vous dès maintenant.</p>
-                </td>
-            </tr>
-            <tr>
-                
-                <td colspan="3">
-                    <center>
-                    <a href="login.php" >
-                        <input type="button" value="Prendre rendez-vous" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+            <!-- Add content after the navbar -->
+            <div style="padding-top: 220px;">
+                <p class="heading-text">Évitez les tracas et les retards.</p>
+                <center>
+                    <a href="login.php">
+                        <input type="button" value="Prendre rendez-vous" class="login-btn btn-primary btn" style="padding-left: 25px; padding-right: 25px; padding-top: 10px; padding-bottom: 10px;">
                     </a>
                 </center>
-                </td>
-                
-            </tr>
-            <tr>
-                <td colspan="3">
+            </div>
             
-                </td>
-            </tr>
-        </table>
-        <p class="sub-text2 footer-hashen">A Solution by CompArt.</p>
-    </center>
-    
+            <p class="sub-text2 footer-hashen">Une solution par CompArt.</p>
+        </center> 
     </div>
+
+    <!-- New Section with Cards -->
+    <div class="doctors-section">
+        <h2>Nous avons les meilleurs médecins</h2>
+        <div class="cards-container">
+            <!-- Example card for a doctor -->
+            <div class="card">
+                <img src="./img/avatar.jpg" alt="Doctor Image">
+                <h3>Médecin</h3>
+                <p>Spécialité</p>
+                <p>Emplacement</p>
+            </div>
+            <div class="card">
+                <img src="./img/avatar.jpg" alt="Doctor Image">
+                <h3>Médecin</h3>
+                <p>Spécialité</p>
+                <p>Emplacement</p>
+            </div>
+            <div class="card">
+                <img src="./img/avatar.jpg" alt="Doctor Image">
+                <h3>Médecin</h3>
+                <p>Spécialité</p>
+                <p>Emplacement</p>
+            </div>
+        </div>
+    </div>
+      <div>
+        <section class="footer">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="./img/logo.png" alt="Footer Logo" style="width: 150px; height: auto;">
+                    </div>
+                    <h4>Info</h4>
+                    <ul class="links">
+                        <li><a href="#">À propos de nous</a></li>
+                        <li><a href="#">Clients</a></li>
+                        <li><a href="#">Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul class="links">
+                        <li><a href="#">Contrat client</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Bulletin</h4>
+                    <p>Abonnez-vous à notre newsletter pour une dose hebdomadaire
+                        d'actualités, de mises à jour, de conseils utiles et
+                        d'offres exclusives.
+                    </p>
+                    <form action="#">
+                        <input type="text" placeholder="Votre email" required>
+                        <button type="submit">S'ABONNER</button>
+                    </form>
+                    <div class="icons">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CSS Links (Include Font Awesome for Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</body>
+</html>
 </body>
 </html>

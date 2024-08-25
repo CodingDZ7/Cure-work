@@ -212,13 +212,7 @@ $username=$userfetch["pname"];
                         <i class="fa fa-book fa-2x" style="color: #006950;"></i>
                         <span class="nav-text">Mes réservations</span>
                     </a>
-                </li>
-                <li>
-                    <a href="settings.php">
-                        <i class="fa fa-gear fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Paramètres</span>
-                    </a>
-                </li>
+                </li> 
             </ul>
             <ul class="logout">
                 <li>

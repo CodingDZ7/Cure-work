@@ -1,42 +1,3 @@
-<?php
-
-
-session_start();
-
-if(isset($_SESSION["user"])){
-    if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
-        header("location: ../login.php");
-    }else{
-        $useremail=$_SESSION["user"];
-    }
-
-}else{
-    header("location: ../login.php");
-}
-
-
-//import database
-include("../connection.php");
-$sqlmain= "select * from patient where pemail=?";
-$stmt = $database->prepare($sqlmain);
-$stmt->bind_param("s",$useremail);
-$stmt->execute();
-$result = $stmt->get_result();
-$userfetch=$result->fetch_assoc();
-$userid= $userfetch["pid"];
-$username=$userfetch["pname"];
-
-
-//echo $userid;
-//echo $username;
-
-date_default_timezone_set('Africa/Algiers');
-
-$today = date('Y-m-d');
-
-
-//echo $userid;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +7,6 @@ $today = date('Y-m-d');
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="icon" href="../img/favicon.png" type="image/png"> 
         
     <title>Séances</title>
@@ -57,179 +17,100 @@ $today = date('Y-m-d');
         .sub-table{
             animation: transitionIn-Y-bottom 0.5s;
         }
-        .fa-2x {
-            font-size: 2em;
-        }
-        .fa {
-            position: relative;
-            display: table-cell;
-            width: 60px;
-            height: 74px; /* Added a value for height */
-            text-align: center;
-            vertical-align: middle;
-            font-size: 20px;
-        }
-        .main-menu {
-            background: #ffffff;
-            border-right: 1px solid #e5e5e5;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            height: 100%;
-            left: 0;
-            width: 60px;
-            overflow: hidden;
-            -webkit-transition: width .05s linear;
-            transition: width .05s linear;
-            -webkit-transform: translateZ(0) scale(1, 1);
-            z-index: 1000;
-        }
-        .main-menu:hover, nav.main-menu.expanded {
-            width: 250px;
-            overflow: visible;
-        }
-        .main-menu > ul {
-            margin: 7px 0;
-        }
-        .main-menu li {
-            position: relative;
-            display: block;
-            width: 250px;
-        }
-        .main-menu li > a {
-            position: relative;
-            display: table;
-            border-collapse: collapse;
-            border-spacing: 0;
-            color: #000000;
-            font-family: arial;
-            font-size: 14px;
-            text-decoration: none;
-            -webkit-transform: translateZ(0) scale(1, 1);
-            -webkit-transition: all .1s linear;
-            transition: all .1s linear;
-        }
-        .main-menu .nav-icon {
-            position: relative;
-            display: table-cell;
-            width: 60px;
-            height: 36px;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 18px;
-        }
-        .main-menu .nav-text {
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            width: 190px;
-            font-family: 'Titillium Web', sans-serif;
-        }
-        .main-menu > ul.logout {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-        }
-        .no-touch .scrollable.hover {
-            overflow-y: hidden;
-        }
-        .no-touch .scrollable.hover:hover {
-            overflow-y: auto;
-            overflow: visible;
-        }
-        a:hover, a:focus {
-            text-decoration: none;
-        }
-        nav {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -o-user-select: none;
-            user-select: none;
-        }
-        nav ul, nav li {
-            outline: 0;
-            margin: 0;
-            padding: 0;
-        }
-        .main-menu li:hover > a, nav.main-menu li.active > a, .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, .no-touch .dashboard-page nav.dashboard-menu ul li:hover a, .dashboard-page nav.dashboard-menu ul li.active a {
-            color: #fff;
-            background-color: #00bd71;
-        }
-        .area {
-            float: left;
-            background: #e2e2e2;
-            width: 100%;
-            height: 100%;
-        }
-        @font-face {
-            font-family: 'Titillium Web';
-            font-style: normal;
-            font-weight: 300;
-            src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
-        }
-
-        .filter-container{
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 30%;
-        }
-        @media(max-width: 768px) {
-            .filter-container{
-                /*display: block;*/
-                position: relative;
-                display: flex;
-                flex-direction: column;
-            }
-            td .dashboard-items{
-                position: relative;
-                width: 180px;
-                font-style: 10px;
-                top:70%;
-                left: 10%;
-            }
-        }
 </style>
 </head>
 <body>
- <div class="container"> 
-     <nav class="main-menu">
-     <ul>
-                <li>
-                    <a href="index.php">
-                        <i class="fa fa-home fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Accueil</span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="doctors.php">
-                        <i class="fa fa-stethoscope fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Tous les médecins</span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="schedule.php">
-                    <i class="fa fa-list fa-2x" style="color:  #006950;"></i>
-                        <span class="nav-text">Séances programmées</span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="appointment.php">
-                        <i class="fa fa-book fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Mes réservations</span>
-                    </a>
-                </li> 
-            </ul>
-            <ul class="logout">
-                <li>
-                    <a href="../logout.php">
-                        <i class="fa fa-power-off fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Se déconnecter</span>
-                    </a>
-                </li>  
-            </ul>
-        </nav>
+    <?php
+
+    //learn from w3schools.com
+
+    session_start();
+
+    if(isset($_SESSION["user"])){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
+            header("location: ../login.php");
+        }else{
+            $useremail=$_SESSION["user"];
+        }
+
+    }else{
+        header("location: ../login.php");
+    }
+    
+
+    //import database
+    include("../connection.php");
+    $sqlmain= "select * from patient where pemail=?";
+    $stmt = $database->prepare($sqlmain);
+    $stmt->bind_param("s",$useremail);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $userfetch=$result->fetch_assoc();
+    $userid= $userfetch["pid"];
+    $username=$userfetch["pname"];
+
+
+    //echo $userid;
+    //echo $username;
+    
+    date_default_timezone_set('Asia/Kolkata');
+
+    $today = date('Y-m-d');
+
+
+ //echo $userid;
+ ?>
+ <div class="container">
+     <div class="menu">
+     <table class="menu-container" border="0">
+             <tr>
+                 <td style="padding:10px" colspan="2">
+                     <table border="0" class="profile-container">
+                         <tr>
+                             <td width="30%" style="padding-left:20px" >
+                                 <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
+                             </td>
+                             <td style="padding:0px;margin:0px;">
+                                 <p class="profile-title"><?php echo substr($username,0,13)  ?>..</p>
+                                 <p class="profile-subtitle"><?php echo substr($useremail,0,22)  ?></p>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td colspan="2">
+                                 <a href="../logout.php" ><input type="button" value="Se déconnecter" class="logout-btn btn-primary-soft btn"></a>
+                             </td>
+                         </tr>
+                 </table>
+                 </td>
+             </tr>
+             <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-home " >
+                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Accueil</p></a></div></a>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-doctor">
+                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">Tous les médecins</p></a></div>
+                    </td>
+                </tr>
+                
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-session menu-active menu-icon-session-active">
+                        <a href="schedule.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Séances programmées</p></div></a>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-appoinment">
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Mes réservations</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-settings">
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Paramètres</p></a></div>
+                    </td>
+                </tr>
+                
+            </table>
         </div>
         <?php
 
@@ -258,8 +139,18 @@ $today = date('Y-m-d');
 
 
                 ?>
+                  
+        <div class="dash-body">
+            <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
+                <tr >
+                    <td width="13%" >
+                    <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Retour</font></button></a>
+                    </td>
+                    <td >
+                            <form action="" method="post" class="header-search">
 
-                                    <div class="dash-body"> 
+                                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Rechercher le nom du médecin ou l'adresse e-mail ou la date (AAAA-MM-JJ)" list="doctors" value="<?php  echo $insertkey ?>">&nbsp;&nbsp;
+                                        
                                         <?php
                                             echo '<datalist id="doctors">';
                                             $list11 = $database->query("select DISTINCT * from  doctor;");
@@ -272,21 +163,31 @@ $today = date('Y-m-d');
                                             for ($y=0;$y<$list11->num_rows;$y++){
                                                 $row00=$list11->fetch_assoc();
                                                 $d=$row00["docname"];
-
+                                               
                                                 echo "<option value='$d'><br/>";
-
+                                               
                                             };
 
 
                                             for ($y=0;$y<$list12->num_rows;$y++){
                                                 $row00=$list12->fetch_assoc();
                                                 $d=$row00["title"];
-
+                                               
                                                 echo "<option value='$d'><br/>";
                                                 };
 
                                         echo ' </datalist>';
             ?>
+                                        
+                                
+                                        <input type="Submit" value="Recherche" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                                        </form>
+                    </td>
+                    
+                    <td width="10%">
+                        <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
+                    </td>
+
 
                 </tr>
                 
@@ -302,8 +203,8 @@ $today = date('Y-m-d');
                 
                 
                 <tr>
-                <td colspan="4">
-                    <center>
+                   <td colspan="4">
+                       <center>
                         <div class="abc scroll">
                         <table width="100%" class="sub-table scrolldown" border="0" style="padding: 50px;border:none">
                             
@@ -399,17 +300,17 @@ $today = date('Y-m-d');
                                     
                                 }
                             }
-
+                                 
                             ?>
-
+ 
                             </tbody>
 
                         </table>
                         </div>
                         </center>
-                </td> 
+                   </td> 
                 </tr>
-
+                       
                         
                         
             </table>

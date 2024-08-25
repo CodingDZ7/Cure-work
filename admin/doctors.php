@@ -1,5 +1,27 @@
+<?php
+
+//learn from w3schools.com
+
+session_start();
+
+if(isset($_SESSION["user"])){
+    if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+        header("location: ../login.php");
+    }
+
+}else{
+    header("location: ../login.php");
+}
+
+
+
+//import database
+include("../connection.php");
+
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,92 +29,179 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
         
     <title>Doctors</title>
     <style>
-        .popup{
+         .dashbord-tables {
+            animation: transitionIn-Y-over 0.5s;
+        }
+        .filter-container {
             animation: transitionIn-Y-bottom 0.5s;
         }
-        .sub-table{
+        .sub-table, .anime {
             animation: transitionIn-Y-bottom 0.5s;
         }
+        .fa-2x {
+            font-size: 2em;
+        }
+        .fa {
+            position: relative;
+            display: table-cell;
+            width: 60px;
+            height: 74px; /* Added a value for height */
+            text-align: center;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        .main-menu {
+            background: #ffffff;
+            border-right: 1px solid #e5e5e5;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            width: 60px;
+            overflow: hidden;
+            -webkit-transition: width .05s linear;
+            transition: width .05s linear;
+            -webkit-transform: translateZ(0) scale(1, 1);
+            z-index: 1000;
+        }
+        .main-menu:hover, nav.main-menu.expanded {
+            width: 250px;
+            overflow: visible;
+        }
+        .main-menu > ul {
+            margin: 7px 0;
+        }
+        .main-menu li {
+            position: relative;
+            display: block;
+            width: 250px;
+        }
+        .main-menu li > a {
+            position: relative;
+            display: table;
+            border-collapse: collapse;
+            border-spacing: 0;
+            color: #000000;
+            font-family: arial;
+            font-size: 14px;
+            text-decoration: none;
+            -webkit-transform: translateZ(0) scale(1, 1);
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+        .main-menu .nav-icon {
+            position: relative;
+            display: table-cell;
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 18px;
+        }
+        .main-menu .nav-text {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 190px;
+            font-family: 'Titillium Web', sans-serif;
+        }
+        .main-menu > ul.logout {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .no-touch .scrollable.hover {
+            overflow-y: hidden;
+        }
+        .no-touch .scrollable.hover:hover {
+            overflow-y: auto;
+            overflow: visible;
+        }
+        a:hover, a:focus {
+            text-decoration: none;
+        }
+        nav {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        nav ul, nav li {
+            outline: 0;
+            margin: 0;
+            padding: 0;
+        }
+        .main-menu li:hover > a, nav.main-menu li.active > a, .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, .no-touch .dashboard-page nav.dashboard-menu ul li:hover a, .dashboard-page nav.dashboard-menu ul li.active a {
+            color: #fff;
+            background-color: #00bd71;
+        }
+        .area {
+            float: left;
+            background: #e2e2e2;
+            width: 100%;
+            height: 100%;
+        }
+        @font-face {
+            font-family: 'Titillium Web';
+            font-style: normal;
+            font-weight: 300;
+            src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+        }
+ 
 </style>
 </head>
 <body>
-    <?php
 
-    //learn from w3schools.com
-
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
-            header("location: ../login.php");
-        }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
-    
-
-    //import database
-    include("../connection.php");
-
-    
-    ?>
     <div class="container">
-        <div class="menu">
-            <table class="menu-container" border="0">
-                <tr>
-                    <td style="padding:10px" colspan="2">
-                        <table border="0" class="profile-container">
-                            <tr>
-                                <td width="30%" style="padding-left:20px" >
-                                    <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
-                                </td>
-                                <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
-                                </td>
-                            </tr>
-                    </table>
-                    </td>
-                
-                </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-dashbord" >
-                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">Dashboard</p></a></div></a>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
-                        <a href="doctors.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Doctors</p></a></div>
-                    </td>
-                </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-schedule">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule</p></div></a>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Appointment</p></a></div>
-                    </td>
-                </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-patient">
-                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Patients</p></a></div>
-                    </td>
-                </tr>
-
-            </table>
-        </div>
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <a href="index.php">
+                    <i class="fa fa-home fa-2x" style="color: #006950;"></i>
+                    <span class="nav-text">Tableau de bord</span>
+                </a>
+            </li>
+            <li>
+                <a href="doctors.php">
+                    <i class="fa fa-list fa-2x" style="color: #006950;"></i>
+                    <span class="nav-text">Médecins</span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a href="schedule.php">
+                <i class="fa fa-list fa-2x" style="color:  #006950;"></i>
+                    <span class="nav-text">Calendrier</span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a href="appointment.php">
+                    <i class="fa fa-book fa-2x" style="color: #006950;"></i>
+                    <span class="nav-text">Rendez-vous</span>
+                </a>
+            </li>
+            <li>
+                <a href="patient.php">
+                    <i class="fa fa-gear fa-2x" style="color: #006950;"></i>
+                    <span class="nav-text">Patients</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="logout">
+            <li>
+                <a href="../logout.php">
+                    <i class="fa fa-power-off fa-2x" style="color: #006950;"></i>
+                    <span class="nav-text">Se déconnecter</span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >

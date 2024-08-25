@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 /* Base styles */
 body {
-    background-image: url(../img/bg01.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 html, body {
     height: 100%;
     margin: 0;
+    
 }
 
 .full-height {
@@ -26,7 +30,7 @@ table {
 
 .heading-text {
     color: white;
-    font-size: 42px;
+    font-size: 32px;
     font-weight: 700;
     line-height: 63px;
     margin-top: 15%;
@@ -87,6 +91,7 @@ table {
   margin-right: auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  
 }
 
 /* xs */
@@ -179,5 +184,202 @@ table {
 @media (max-width: 475px) {
   .container {
     width: 100%;
+  }
+}
+
+/* Style for the full-height section */
+.full-height {
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f4f4f4; /* Example background color */
+}
+
+/* Style for the new section */
+.scroll-section {
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f4f4f4; /* Different background color */
+  color: rgb(255, 255, 255); /* Text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style for the section title */
+.section-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Style for the section text */
+.section-text {
+  font-size: 18px;
+  max-width: 600px;
+}
+/* Fixed Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #006950; /* Background color for the navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow for better visibility */
+  z-index: 1000; /* Make sure it's on top of other content */
+  padding: 10px 0; /* Adjust padding for spacing */
+}
+
+/* Adjust table styling for the navbar */
+.navbar table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0 20px; /* Add some padding for better alignment */
+}
+
+.navbar .nav-item {
+  font-size: 16px;  
+  color: #333;  
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;  
+}
+
+.navbar a:hover .nav-item {
+  color: #006950; 
+}
+
+ 
+@media (max-width: 768px) {
+  .navbar td {
+      width: auto;  
+      text-align: center;
+      padding: 10px 0;  
+  }
+  
+  .navbar .nav-item {
+      font-size: 14px;  
+  }
+}
+.footer {
+  position: relative;
+  width: 100%;
+  background: #006950;
+  border-radius: 6px;
+  padding: 60px 0;
+  bottom: 0; /* Ensure it sticks to the bottom */
+}
+
+.footer .footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3.5rem;
+  padding: 0 60px; /* Adjust padding for content alignment */
+}
+
+.footer-row .footer-col h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.footer-col .links {
+  margin-top: 20px;
+}
+
+.footer-col .links li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footer-col .links li a {
+  text-decoration: none;
+  color: #bfbfbf;
+}
+
+.footer-col .links li a:hover {
+  color: #fff;
+}
+
+.footer-col p {
+  margin: 20px 0;
+  color: #bfbfbf;
+  max-width: 300px;
+}
+
+.footer-col form {
+  display: flex;
+  gap: 5px;
+}
+
+.footer-col input {
+  height: 40px;
+  border-radius: 6px;
+  background: none;
+  width: 100%;
+  outline: none;
+  border: 1px solid #78c6b4 ;
+  caret-color: #fff;
+  color: #fff;
+  padding-left: 10px;
+}
+
+.footer-col input::placeholder {
+  color: #ccc;
+}
+
+.footer-col form button {
+  background: #fff;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.footer-col form button:hover {
+  background: #cecccc;
+}
+
+.footer-col .icons {
+  display: flex;
+  margin-top: 30px;
+  gap: 30px;
+  cursor: pointer;
+}
+
+.footer-col .icons i {
+  color: #afb6c7;
+}
+
+.footer-col .icons i:hover  {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    border-radius: 0;
+    padding: 20px;
+  }
+
+  .footer .footer-row {
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .footer-col form {
+    display: block;
+  }
+
+  .footer-col form :where(input, button) {
+    width: 100%;
+  }
+
+  .footer-col form button {
+    margin: 10px 0 0 0;
   }
 }

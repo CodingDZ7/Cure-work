@@ -152,25 +152,23 @@ body{
 .btn-label{
     margin-left: 10px;
     padding: 12px 12px;
-    outline: none;
-    text-decoration: none;
     font-size: 15px;
     letter-spacing: 0.5px;
-    transition: all 0.3s;
     border-radius: 5px;
     background-color: #f0f0f073;
     border: 1px solid rgba(57, 240, 188, 0.3) ;
     font-family: 'Inter', sans-serif;
+    
 }
 
 
 .sub-table{
     border: 1px solid #ebebeb;
     border-radius: 8px;
-    margin-left: 100px;
-    width: 80%;
-    max-width: 40px;
-    
+    margin-left: 10px;
+    min-width: 100%;
+    max-width: 400px;
+    overflow: hidden;
 }
 
 .filter-container{
@@ -189,17 +187,17 @@ body{
 
 }
 .table-headin{
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
-    padding: 7px;
+    padding-left: 150px;
     border-bottom: 3px solid var(--primarycolor);
-     
+    
 }
 
 .abc{
   width: 100%;
   height: 550px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .overlay {
@@ -545,14 +543,14 @@ input[type=search]:focus {
 }
 
 .search-items{
-  padding:20px;
+  padding:10px;
   margin:10px;
-  width:95%;
+  width:90%;
   display: flex;
   padding-left:0;
-  padding-left: 30px;
+  padding-left: 10px;
   box-sizing: border-box;
-  line-height: 1.5;
+  line-height: 1.3;
   box-shadow: 0 3px 5px 0 rgba(95, 95, 97, 0.068);
 }
 

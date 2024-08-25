@@ -57,7 +57,7 @@ body{
     padding-bottom: 12%;
     box-shadow: 0 0 3px rgba(52,58,64,0.08);
     text-align: center;
-    
+    overflow: hidden;
 }
 
 

@@ -188,19 +188,12 @@ if(isset($_SESSION["user"])){
 <body>
    
     <div class="container">
-        <div class="menu">
         <nav class="main-menu">
             <ul>
                 <li>
                     <a href="index.php">
                         <i class="fa fa-home fa-2x" style="color: #006950;"></i>
                         <span class="nav-text">Accueil</span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="doctors.php">
-                        <i class="fa fa-stethoscope fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Tous les médecins</span>
                     </a>
                 </li>
                 <li class="has-subnav">
@@ -233,12 +226,36 @@ if(isset($_SESSION["user"])){
         </nav>
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
-                <tr >
-                    <td width="1%" >
-                    <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:65px;width:200px"><font class="tn-in-text">Retour</font></button></a>
+            <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
+                <tr>
+                    <td width="270%">
+                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
+                            Date d'aujourd'hui
+                        </p>
+                        <p class="heading-sub12" style="padding: 0;margin: 0;">
+                            <?php 
+
+                        date_default_timezone_set('Africa/Algiers');
+
+                        $today = date('Y-m-d');
+                        echo $today;
+
+                        $list110 = $database->query("select  * from  schedule where docid=$userid;");
+
+                        ?>
+                        </p>
+                    </td> 
+                    <td width="10%">
+                        <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                     </td>
+
+
+                </tr>
+               
+                
+            <tr>
                     <td>
-                        <p style="font-size: 27px;padding-left:5px;font-weight: 600;">Gestionnaire des rendez-vous</p>
+                        <p style="font-size: 27px;padding-left:95px;font-weight: 570;">Gestionnaire des rendez-vous</p>
                                            
                     </td>
                     
@@ -275,7 +292,7 @@ if(isset($_SESSION["user"])){
                    <td colspan="4">
                        <center>
                         <div class="abc scroll">
-                        <table width="150%" class="sub-table scrolldown" border="0">
+                        <table width="150%" class="sub-table" border="0" >
                         <thead>
                         <tr>
                                 <th class="table-headin">
@@ -286,7 +303,6 @@ if(isset($_SESSION["user"])){
                                 Numéro de rendez-vous
                                     
                                 </th>
-                               
                                 <th class="table-headin">
                                     
                                 
@@ -327,7 +343,7 @@ if(isset($_SESSION["user"])){
                                     <img src="../img/notfound.svg" width="25%">
                                     
                                     <br>
-                                    <p class="heading-main12" style="margin-left: 65px;font-size:20px;color:rgb(49, 49, 49)">Nous n`\'avons rien trouvé en rapport avec vos mots-clés !</p>
+                                    <p class="heading-main12" style="margin-left: 5px;font-size:20px;color:rgb(49, 49, 49)">Nous n\'avons rien trouvé en rapport</p>
                                     <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp;Afficher tous les rendez-vous &nbsp;</font></button>
                                     </a>
                                     </center>

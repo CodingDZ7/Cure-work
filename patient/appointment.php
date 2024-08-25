@@ -213,8 +213,7 @@ $result= $database->query($sqlmain);
 </head>
 <body>
  
-    <div class="container">
-        <div class="menu">
+    <div class="container"> 
         <nav class="main-menu">
             <ul>
                 <li>
@@ -240,13 +239,7 @@ $result= $database->query($sqlmain);
                         <i class="fa fa-book fa-2x" style="color: #006950;"></i>
                         <span class="nav-text">Mes réservations</span>
                     </a>
-                </li>
-                <li>
-                    <a href="settings.php">
-                        <i class="fa fa-gear fa-2x" style="color: #006950;"></i>
-                        <span class="nav-text">Paramètres</span>
-                    </a>
-                </li>
+                </li> 
             </ul>
             <ul class="logout">
                 <li>
@@ -342,7 +335,7 @@ $result= $database->query($sqlmain);
                                     <img src="../img/notfound.svg" width="25%">
                                     
                                     <br>
-                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nous n\'avons rien trouvé en rapport avec vos mots-clés !</p>
+                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nous n\'avons rien trouvé en rapport !</p>
                                     <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Afficher tous les rendez-vous &nbsp;</font></button>
                                     </a>
                                     </center>
